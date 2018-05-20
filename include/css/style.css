@@ -1,22 +1,215 @@
-.item1 { grid-area: header; }
-.item2 { grid-area: menu; }
-.item3 { grid-area: main; }
-.item4 { grid-area: right; }
-.item5 { grid-area: footer; }
+.header {
+    grid-area: header;
+}
+.maincontent {
+    grid-area: main;
+}
+.footer {
+    grid-area: footer;
+    text-align: center;
+    vertical-align: center;
+}
+
+/*Login*/
+.helpbtn {
+    grid-area: helpbtn;
+}
+.helpbtn > button {
+    float: right;
+}
+.logo {
+    grid-area: logo;
+
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.login-form {
+    grid-area: loginarea;
+    background-color: #EDEDED;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 15px;
+    border-color:#d2d2d2;
+    border-width: 5px;
+    box-shadow:0 1px 0 #cfcfcf;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+}
 
 .grid-container {
     display: grid;
     grid-template-areas:
-            'header header header header header header'
-            'menu main main main right right'
-            'menu footer footer footer footer footer';
+            'header'
+            'main'
+            'footer';
     grid-gap: 10px;
-    background-color: #2196F3;
+    height: 100%;
+    grid-template-columns: 1fr;
+    /*background-color: #2196F3;*/
     padding: 10px;
+    grid-template-rows: 50px
+    1fr
+    50px;
+    min-height: 100vh;
 }
-.grid-container > div {
-    background-color: rgba(255, 255, 255, 0.8);
-    text-align: center;
-    padding: 20px 0;
-    font-size: 30px;
+
+.grid-container-login {
+    display: grid;
+    grid-template-areas:
+            'helpbtn logo .'
+            'helpbtn loginarea .';
+    grid-gap: 10px;
+    height: 100%;
+    /*grid-template-columns: 750px 1fr 750px;*/
+    padding: 10px;
+    /*grid-template-rows:
+            300px
+            300px;*/
 }
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+    .helpbtn > button
+    {
+        float: none;
+    }
+    .grid-container-login
+    {
+        grid-template-areas:
+                '. logo .'
+                '. loginarea .'
+                '. helpbtn . ';
+        grid-template-columns: 10px 1fr 10px;
+        grid-template-rows:
+                150px
+                1fr
+                30px;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    body{font-size: 150%;}
+    .brandingtext{
+        font-size: 150%;
+    }
+    .grid-container > div {
+        font-size: 150%;
+    }
+    .grid-container-login
+    {
+        grid-template-columns: 10px 1fr 10px;
+        grid-template-rows:
+                300px
+                300px;
+    }
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    body{font-size: 200%;}
+    .brandingtext{
+        font-size: 200%;
+    }
+
+    .logo > img
+    {
+        width: 75%;
+    }
+
+    .grid-container > div {
+        font-size: 200%;
+    }
+
+    .grid-container-login
+    {
+        grid-template-columns: 75px 1fr 75px;
+        grid-template-rows:
+                300px
+                300px;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+    .logo > img
+    {
+        width: 75%;
+    }
+
+    .grid-container-login
+    {
+        grid-template-columns: 100px 1fr 100px;
+        grid-template-rows:
+                300px
+                300px;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+    .logo > img
+    {
+        width: 75%;
+    }
+
+    .grid-container > div {
+        background-color: rgba(255, 255, 255, 0.8);
+        text-align: center;
+        /*padding: 20px 0;*/
+        font-size: 30px;
+    }
+
+    .grid-container-login
+    {
+        grid-template-columns: 300px 1fr 300px;
+        grid-template-rows:
+                300px
+                300px;
+    }
+}
+/* Super Wide Screens I.E MY LAPTOP SCREEN SIZE!!!!!!!*/
+@media only screen and (min-width: 1900px) {
+
+    .logo > image
+    {
+        width: 70%;
+    }
+    .grid-container > div {
+        background-color: rgba(255, 255, 255, 0.8);
+        text-align: center;
+        /*padding: 20px 0;*/
+        font-size: 30px;
+    }
+
+    .grid-container-login
+    {
+        grid-template-columns: 600px 1fr 600px;
+        grid-template-rows:
+                300px
+                0;
+    }
+
+}
+
+
+

@@ -7,5 +7,11 @@
  */
 ?>
 
+<div class="footer">
+    <div>
+        Fitness Centre (c) 2018
+    </div>
+</div>
+
 </body>
 </html>
