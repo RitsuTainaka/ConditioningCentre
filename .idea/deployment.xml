@@ -5,7 +5,7 @@
       <paths name="Home">
         <serverdata>
           <mappings>
-            <mapping deploy="/" local="$PROJECT_DIR$" web="/cc" />
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/ConditioningCentre" />
           </mappings>
         </serverdata>
       </paths>

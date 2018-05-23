@@ -9,7 +9,12 @@ include_once ("header.php");
 ?>
 <div class="maincontent">
     <?php
-    include ("login.php");
+    if(isset($_SESSION['login_user'])) {
+        include ("mainmenu.php");
+    }
+    else {
+        include("login.php");
+    }
     ?>
 </div>
 
