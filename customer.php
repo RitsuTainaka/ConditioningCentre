@@ -8,9 +8,13 @@
 
 $selectedProgram = $_GET['program'];
 include_once ("header.php");
+if(!isset($_SESSION['login_user']))
+{
+    header("refresh:0; url=" . "http://rukiax.noip.me/ConditioningCentre/");
+    die;
+}
 $db = new db();
 $page = "customer";
-
 ?>
 
 <div class="grid-container-customer">
@@ -29,50 +33,76 @@ $page = "customer";
             $result = $db::query($sql);
             ?>
         <form method="get" action="bodyarea.php">
-            <select name="customerdetail" class="customerselection" >
+            <select name="customerdetail" class="customerselection" onchange="selected_cid()" >
         <?php
             while($row = mysqli_fetch_array($result)) {
 
-                $value = $row['customerID'] ."|". $row['customerName'];
-                echo '<option value="' . $value .  '">' . $row['customerName'] . '</option>';
+                        $value = $row['customerID'] ."|". $row['customerName'];
+                        echo '<option value="' . $value .  '">' . $row['customerName'] . '</option>';
                         }?>
                     </select>
                     <input type="hidden" name="program" value="<?php echo $selectedProgram ?>">
                     <br>
                     <button type="submit" class="btn btn-primary btn-block">Select</button>
-                    <a href="#" class="btn btn-primary btn-block">Edit Customer</a>
-                    <a href="#" class="btn btn-primary btn-block">Add Customer</a>
+                    <a data-toggle="modal" href="#myModalEditCustomer" class="btn btn-primary btn-block" id = "editcustomer" name="editcustomer">Edit Member</a>
+                    <a data-toggle="modal" href="#myModalCustomer" class="btn btn-primary btn-block" id = "newcustomer" name="newcustomer">Add Member</a>
                 </form>
-
     </div>
 </div>
-
+    <div class="modal-container"></div>
 <script type="text/javascript">
+    var $current_selected_customer_id;
     document.getElementById("navbartext").innerHTML = "Select Customer";
-    document.getElementById("titlemessage").textContent = "Customer Selection";
-    document.getElementById("navback").style.visibility ="visible";
+    document.getElementById("navback").style.display ="block";
     document.getElementById("navback").href = "program.php";
 
     $(document).ready(function() {
+        console.debug("Here");
         $('body').on('click', '.btn' , function (event) {
             event.stopPropagation();
-            var id = $('#'+event.target.id).attr("name");
             var url;
-            var $test = event.target.id.substring(0,9);
+            var $test = event.target.id;
+
             if($test === "modallink")
             {
+                var id = $('#'+event.target.id).attr("name");
                 url = "help.php?page=" + id;
+                $('.modal-container').load(url, function (result) {
+                    $('#myModal').modal({show: true});
+                });
             }
-            console.debug(url);
-            $('.modal-container').load(url, function (result) {
-                $('#myModal').modal({show: true});
-            });
+            else if($test === "newcustomer")
+            {
+                url = "addcustomer.php?program=<?php echo $selectedProgram; ?>";
+                $('.modal-container').load(url, function (result) {
+                    $('#myModalCustomer').modal({show: true});
+                });
+            }
+            else if($test === "editcustomer")
+            {
+                console.debug("Here");
+                url = "editcustomer.php?userid=" + $current_selected_customer_id + "&program=<?php echo $selectedProgram; ?>" ;
+                $('.modal-container').load(url, function (result) {
+                    $('#myModalEditCustomer').modal({show: true});
+                });
+            }
+
         });
     });
 
     $(document).on("hidden.bs.modal", "#myModal", function () {
         $('#myModal').remove(); // Remove from DOM.
     });
+    $(document).on("hidden.bs.modal", "#myModalCustomer", function () {
+        $('#myModalCustomer').remove(); // Remove from DOM.
+    });
+    $(document).on("hidden.bs.modal", "#myModalEditCustomer", function () {
+        $('#myModalEditCustomer').remove(); // Remove from DOM.
+    });
+    function selected_cid() {
+        var temp = $(".customerselection").val().split("|", 1);
+        $current_selected_customer_id = temp;
+    }
 
 </script>
 <?php

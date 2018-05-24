@@ -6,17 +6,13 @@
  * Time: 12:37 AM
  */
 session_start();
-includeFile("config.php");
-$db = new db();
+//includeFile("include/core.php");
+//$db = new db();
 
-if(!empty($_POST["logout"])) {
-    //echo 'logout';
-    $updatesql = "UPDATE CoachLoginAccount SET sessionid = NULL WHERE username='" . $_SESSION["login_user"] . "'";
 
-    $result = db::query($updatesql) or
-    die(mysqli_connect_error());
-    $_SESSION["login_user"] = null;
-    $_SESSION["sessionid"] = null;
+    //$updatesql = "UPDATE CoachLoginAccount SET sessionid = NULL WHERE username='" . $_SESSION["login_user"] . "'";
+
+    //$result = $db::query($updatesql) or
+    //die(mysqli_connect_error());
     session_destroy();
-    pageReturn(siteroot());
-}
+    header("refresh:0; url=" . "http://rukiax.noip.me/ConditioningCentre/");

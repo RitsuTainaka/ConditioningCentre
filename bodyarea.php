@@ -8,15 +8,17 @@
 
 include_once ("header.php");
 
+if(!isset($_SESSION['login_user']))
+{
+    header("refresh:0; url=" . "http://rukiax.noip.me/ConditioningCentre/");
+    die;
+}
+
 $customerdetails = explode('|',$_GET['customerdetail']);
 
 $customerid = $customerdetails[0];
 $customername = $customerdetails[1];
 $selectedprogram = $_GET['program'];
-xdebug_var_dump($customerid);
-xdebug_var_dump($customername);
-xdebug_var_dump($selectedprogram);
-
 $page = "bodyarea";
 ?>
 
@@ -29,20 +31,16 @@ $page = "bodyarea";
     </div>
     <div class="bodyarea">
         <div class="btn-group">
-            <a href="#" class="btn btn-primary btn-block">Chest & Legs</a>
-            <a href="#" class="btn btn-primary btn-block">Legs</a>
-        </div>
-        <div class="btn-group">
-            <a href="#" class="btn btn-primary btn-block">Shoulders & Back</a>
+            <a href="exercise.php?customerid=<?php echo $customerid; ?>&customername=<?php echo $customername; ?>&program=<?php echo $selectedprogram; ?>&area=Chest %26 Arms" class="btn btn-primary btn-block">Chest & Arms</a>
+            <a href="exercise.php?customerid=<?php echo $customerid; ?>&customername=<?php echo $customername; ?>&program=<?php echo $selectedprogram; ?>&area=Legs" class="btn btn-primary btn-block">Legs</a>
+            <a href="exercise.php?customerid=<?php echo $customerid; ?>&customername=<?php echo $customername; ?>&program=<?php echo $selectedprogram; ?>&area=Shoulders %26 Back" class="btn btn-primary btn-block">Shoulders & Back</a>
         </div>
     </div>
 </div>
-
     <script type="text/javascript">
-        document.getElementById("navbartext").innerHTML = "Select Customer";
-        document.getElementById("titlemessage").textContent = "Customer Selection";
-        document.getElementById("navback").style.visibility ="visible";
-        document.getElementById("navback").href = "program.php";
+        document.getElementById("navbartext").innerHTML = "Select Area";
+        document.getElementById("navback").style.display ="block";
+        document.getElementById("navback").href = "customer.php?program=<?php echo $selectedprogram ?>";
 
         $(document).ready(function() {
             $('body').on('click', '.btn' , function (event) {

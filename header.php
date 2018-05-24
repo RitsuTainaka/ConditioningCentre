@@ -38,7 +38,7 @@ debug();
                     }
                     ?>
                     <div class="navbar-brand">
-                        <a href="#" style="visibility: hidden" id="navback"><span class="fas fa-arrow-circle-left backicon">&nbsp;</span></a>
+                        <a href="#" style="display: none;" id="navback"><span class="fas fa-arrow-circle-left backicon">&nbsp;</span></a>
                         <span id="navbartext" class="brandingtext"></span>
                     </div>
                 </div>

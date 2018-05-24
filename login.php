@@ -6,11 +6,12 @@
  * Time: 2:11 AM
  */
 //$db = new db();
+$page = "login";
 ?>
 
 <div class="grid-container-login">
     <div class="helpbtn">
-        <button class="btn-default">Help</button>
+        <a data-toggle="modal" href="#myModal" class="btn btn-primary btn-sm" id = "modallink" name="<?php echo $page; ?>">Help</a>
     </div>
     <div class="logo">
         <img class="center" src="assets/img/logo.png" alt="Fitness Centre Logo">
@@ -25,7 +26,7 @@
                 <br>
                 <div class="wrapper">
                     <span class="group-btn">
-                        <a href="#" class="btn btn-primary btn-lg btn-block">Forgot Password</a>
+                        <a href="#myModalForgot" data-toggle="modal" class="btn btn-primary btn-lg btn-block" id="forgotpass" name="forgotpass">Forgot Password</a>
                         <button name="submit" type="submit" value="submit" class="btn btn-primary btn-lg btn-block">Login</button>
                     </span>
                 </div>
@@ -33,7 +34,41 @@
         </form>
     </div>
 </div>
+<div class="modal-container"></div>
 <script>
     document.getElementById("navback").parentNode.removeChild(document.getElementById("navback"));
     document.getElementById("navbartext").textContent = "Login";
+    $(document).ready(function() {
+        $('body').on('click', '.btn' , function (event) {
+            event.stopPropagation();
+            var url;
+            var $test = event.target.id;
+
+            if($test === "modallink")
+            {
+                var id = $('#'+event.target.id).attr("name");
+                url = "help.php?page=" + id;
+                $('.modal-container').load(url, function (result) {
+                    $('#myModal').modal({show: true});
+                });
+            }
+            else if($test === "forgotpass")
+            {
+                url = "forgotpass.php";
+                $('.modal-container').load(url, function (result) {
+                    $('#myModalForgot').modal({show: true});
+                });
+            }
+        });
+    });
+
+    $(document).on("hidden.bs.modal", "#myModal", function () {
+        $('#myModal').remove(); // Remove from DOM.
+    });
+    $(document).on("hidden.bs.modal", "#myModalCustomer", function () {
+        $('#myModalCustomer').remove(); // Remove from DOM.
+    });
+    $(document).on("hidden.bs.modal", "#myModalEditCustomer", function () {
+        $('#myModalEditCustomer').remove(); // Remove from DOM.
+    });
 </script>

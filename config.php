@@ -6,6 +6,8 @@
  * Time: 10:01 PM
  */
 
+
+
 define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'college_cc');
 define('DB_PASSWORD', 'College2018');

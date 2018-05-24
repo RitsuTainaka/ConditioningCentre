@@ -44,8 +44,53 @@
 .bodyarea{
     grid-area: bodyarea;
 }
+/*Exercise Select*/
+.exercisebtns{
+    grid-area: exercisebtns;
+}
 
+/*tracker*/
+.prevresults{
+    grid-area: oldvalue;
+}
+
+.newresults{
+    grid-area: newvalue;
+}
+.trackersubmit{
+    grid-area: trackersubmit;
+}
+.trackerform{
+    grid-area: trackerform;
+}
+
+/*new user modal*/
+.newuser-textboxes{
+    grid-area: newuser-textboxes;
+}
+.newuser-roleselect{
+    grid-area: newuser-roleselect;
+}
+.newuser-submit{
+    grid-area: newuser-submit;
+}
+
+.edituser-selectuser{
+    grid-area: edituser-selectuser;
+}
+
+.editcustomer-programselect{
+    grid-area: editcustomer-programselect;
+}
 /*Common Stuff*/
+.navbar{
+    position: relative;
+    z-index: 10;
+}
+.fitfill{
+    width: 100%;
+}
+
 .backicon {
     font-size: 2em;
 }
@@ -67,6 +112,13 @@
 .helpbtn > a {
      float: right;
  }
+.exercisebtns > .btn-group-justified
+{
+    padding: 5px;
+}
+.exercisebtns > a{
+    padding: 5px;
+}
 .center {
     display: block;
     margin-left: auto;
@@ -146,11 +198,96 @@ body {
 .grid-container-bodyarea{
     display: grid;
     grid-template-areas:
-            'helpbth logo .'
+            'helpbtn logo .'
             'helpbtn bodyarea . ';
     grid-gap: 10px;
     height: 100%;
     padding: 10px;
+}
+.grid-container-exercise{
+    display: grid;
+    grid-template-areas:
+            'helpbtn logo . '
+            'helpbtn exercisebtns .';
+    grid-gap: 10px;
+    height: 100%;
+    padding: 10px;
+}
+.grid-container-tracker{
+    display: grid;
+    grid-template-areas:
+            'helpbtn title .'
+            'helpbtn trackerform .'
+            'helpbtn trackersubmit .';
+    grid-gap: 10px;
+    height: 100%;
+    padding: 10px;
+}
+.grid-container-trackerboxes{
+    grid-area: trackerboxes;
+    display: inline-grid;
+    grid-template-areas:
+            'oldvalue newvalue';
+    grid-gap: 10px;
+    height: 100%;
+    padding: 10px;
+
+}
+.grid-container-adduser{
+    display: grid;
+    grid-template-areas:
+            'newuser-textboxes'
+            'newuser-roleselect'
+            'newuser-submit';
+    grid-gap: 10px;
+    height: 100%;
+    padding: 45px;
+    grid-template-columns: 1fr;
+    grid-template-rows:
+            50px
+            30px
+            50px;
+}
+
+.grid-container-edituser{
+    display: grid;
+    grid-template-areas:
+            'edituser-selectuser'
+            'newuser-textboxes'
+            'newuser-roleselect'
+            'newuser-submit';
+    grid-gap: 10px;
+    height: 100%;
+    padding: 45px;
+    grid-template-columns: 1fr;
+    grid-template-rows:
+            50px
+            50px
+            30px
+            50px;
+}
+.newcustomer-textboxes{
+     grid-area: newcustomer-textboxes;
+ }
+.newcustomer-coachselect{
+    grid-area: newcustomer-coachselect;
+}
+.grid-container-addcustomer{
+    display: grid;
+    grid-template-areas:
+            'newcustomer-textboxes'
+            'newcustomer-coachselect'
+            'editcustomer-programselect'
+            'newuser-submit';
+    grid-gap: 10px;
+    height: 100%;
+    padding: 45px;
+    grid-template-columns: 1fr;
+    grid-template-rows:
+            150px
+            30px
+            30px
+            50px;
 }
 
 /* Extra small devices (phones, 600px and down) */
@@ -181,6 +318,70 @@ body {
                 1fr
                 50px;
     }
+    .grid-container-program{ /*TODO add to rest of responsive*/
+        grid-template-areas:
+                ' . logo .'
+                ' . title .'
+                ' . programbuttons .'
+                ' . helpbtn .';
+        grid-template-columns: 10px 1fr 10px;
+        grid-template-rows:
+                100px
+                50px
+                1fr
+                50px;
+    }
+    .grid-container-customer{/*TODO add to rest of responsive*/
+        grid-template-areas:
+                ' . logo . '
+                ' . customerselect . '
+                ' . helpbtn . ';
+        grid-template-columns: 10px 1fr 10px;
+        grid-template-rows:
+                100px
+                1fr
+                50px;
+    }
+    .grid-container-bodyarea{/*TODO add to rest of responsive*/
+        grid-template-areas:
+                ' . logo .'
+                ' . bodyarea . '
+                ' . helpbtn . ';
+        grid-template-columns: 10px 1fr 10px;
+        grid-template-rows:
+                100px
+                1fr
+                30px;
+    }
+    .grid-container-exercise{/*TODO add to rest of responsive*/
+        grid-template-areas:
+                ' . logo . '
+                ' . exercisebtns . '
+                ' . helpbtn . ';
+        grid-template-columns: 10px 1fr 10px;
+        grid-template-rows:
+                100px
+                1fr
+                50px;
+    }
+    .grid-container-tracker{/*TODO add to rest of responsive*/
+        grid-template-areas:
+                ' . title . '
+                ' . trackerform . '
+                ' . trackersubmit . '
+                ' . helpbtn . ';
+        grid-template-columns: 10px 1fr 10px;
+        grid-template-rows:
+                100px
+                100px
+                200px
+                50px;
+    }
+    .grid-container-trackerboxes{/*TODO add to rest of responsive*/
+        display: grid;
+        grid-template-columns:100px 100px;
+        grid-template-rows: 200px;
+    }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -204,6 +405,47 @@ body {
                 100px
                 1fr;
     }
+    .grid-container-program{ /*TODO add to rest of responsive*/
+        grid-template-columns: 10px 1fr 10px;
+        grid-template-rows:
+                100px
+                50px
+                1fr;
+    }
+    .grid-container-customer{/*TODO add to rest of responsive*/
+        grid-template-areas:
+                ' . logo . '
+                ' . customerselect . '
+                ' . helpbtn . ';
+        grid-template-columns: 10px 1fr 10px;
+        grid-template-rows:
+                100px
+                30px
+                1fr;
+    }
+    .grid-container-bodyarea{/*TODO add to rest of responsive*/
+        grid-template-columns: 10px 1fr 10px;
+        grid-template-rows:
+                100px
+                1fr;
+    }
+    .grid-container-exercise{/*TODO add to rest of responsive*/
+        grid-template-columns: 10px 1fr 10px;
+        grid-template-rows:
+                100px
+                1fr;
+    }
+    .grid-container-tracker{/*TODO add to rest of responsive*/
+        grid-template-columns: 10px 1fr 10px;
+        grid-template-rows:
+                100px
+                1fr;
+    }
+    .grid-container-trackerboxes{/*TODO add to rest of responsive*/
+        grid-template-columns: 200px 200px;
+        grid-template-rows: 200px;
+    }
+
 
 }
 
@@ -228,6 +470,46 @@ body {
                 100px
                 1fr;
     }
+    .grid-container-program{ /*TODO add to rest of responsive*/
+        grid-template-columns: 75px 1fr 75px;
+        grid-template-rows:
+                100px
+                50px
+                1fr;
+    }
+    .grid-container-customer{/*TODO add to rest of responsive*/
+        grid-template-areas:
+                ' . logo . '
+                ' . customerselect . '
+                ' . helpbtn . ';
+        grid-template-columns: 75px 1fr 75px;
+        grid-template-rows:
+                100px
+                300px
+                1fr;
+    }
+    .grid-container-bodyarea{/*TODO add to rest of responsive*/
+        grid-template-columns: 75px 1fr 75px;
+        grid-template-rows:
+                100px
+                1fr;
+    }
+    .grid-container-exercise{/*TODO add to rest of responsive*/
+        grid-template-columns: 75px 1fr 75px;
+        grid-template-rows:
+                100px
+                1fr;
+    }
+    .grid-container-tracker{/*TODO add to rest of responsive*/
+        grid-template-columns: 75px 1fr 75px;
+        grid-template-rows:
+                100px
+                1fr;
+    }
+    .grid-container-trackerboxes{/*TODO add to rest of responsive*/
+        grid-template-columns: 200px 200px;
+        grid-template-rows: 200px;
+    }
 
 }
 
@@ -245,6 +527,41 @@ body {
         grid-template-rows:
                 100px
                 1fr;
+    }
+    .grid-container-program{ /*TODO add to rest of responsive*/
+        grid-template-columns: 100px 1fr 100px;
+        grid-template-rows:
+                100px
+                50px
+                1fr;
+    }
+    .grid-container-customer{/*TODO add to rest of responsive*/
+        grid-template-columns: 100px 1fr 100px;
+        grid-template-rows:
+                100px
+                1fr;
+    }
+    .grid-container-bodyarea{/*TODO add to rest of responsive*/
+        grid-template-columns: 100px 1fr 100px;
+        grid-template-rows:
+                100px
+                1fr;
+    }
+    .grid-container-exercise{/*TODO add to rest of responsive*/
+        grid-template-columns: 100px 1fr 100px;
+        grid-template-rows:
+                100px
+                1fr;
+    }
+    .grid-container-tracker{/*TODO add to rest of responsive*/
+        grid-template-columns: 100px 1fr 100px;
+        grid-template-rows:
+                100px
+                1fr;
+    }
+    .grid-container-trackerboxes{/*TODO add to rest of responsive*/
+        grid-template-columns: 200px 200px;
+        grid-template-rows: 200px;
     }
 }
 
@@ -268,6 +585,41 @@ body {
         grid-template-rows:
                 100px
                 1fr;
+    }
+    .grid-container-program{ /*TODO add to rest of responsive*/
+        grid-template-columns: 300px 1fr 300px;
+        grid-template-rows:
+                100px
+                50px
+                1fr;
+    }
+    .grid-container-customer{/*TODO add to rest of responsive*/
+        grid-template-columns: 300px 1fr 300px;
+        grid-template-rows:
+                100px
+                1fr;
+    }
+    .grid-container-bodyarea{/*TODO add to rest of responsive*/
+        grid-template-columns: 300px 1fr 300px;
+        grid-template-rows:
+                100px
+                1fr;
+    }
+    .grid-container-exercise{/*TODO add to rest of responsive*/
+        grid-template-columns: 300px 1fr 300px;
+        grid-template-rows:
+                100px
+                1fr;
+    }
+    .grid-container-tracker{/*TODO add to rest of responsive*/
+        grid-template-columns: 300px 1fr 300px;
+        grid-template-rows:
+                100px
+                1fr;
+    }
+    .grid-container-trackerboxes{/*TODO add to rest of responsive*/
+        grid-template-columns: 200px 200px;
+        grid-template-rows: 200px;
     }
 }
 
@@ -299,13 +651,34 @@ body {
                 100px
                 50px
                 1fr;
-    ;
     }
     .grid-container-customer{/*TODO add to rest of responsive*/
         grid-template-columns: 700px 1fr 700px;
         grid-template-rows:
                 100px
                 1fr;
+    }
+    .grid-container-bodyarea{/*TODO add to rest of responsive*/
+        grid-template-columns: 700px 1fr 700px;
+        grid-template-rows:
+                100px
+                1fr;
+    }
+    .grid-container-exercise{/*TODO add to rest of responsive*/
+        grid-template-columns: 700px 1fr 700px;
+        grid-template-rows:
+                100px
+                1fr;
+    }
+    .grid-container-tracker{/*TODO add to rest of responsive*/
+        grid-template-columns: 700px 1fr 700px;
+        grid-template-rows:
+                100px
+                1fr;
+    }
+    .grid-container-trackerboxes{/*TODO add to rest of responsive*/
+        grid-template-columns: 200px 200px;
+        grid-template-rows: 200px;
     }
 
 }

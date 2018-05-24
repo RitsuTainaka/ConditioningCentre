@@ -6,6 +6,11 @@
  * Time: 2:00 PM
  */
 include_once ("header.php");
+if(!isset($_SESSION['login_user']))
+{
+    header("refresh:0; url=" . "http://rukiax.noip.me/ConditioningCentre/");
+    die;
+}
 $page = "program";
 ?>
 
@@ -30,12 +35,11 @@ $page = "program";
         </div>
     </div>
 </div>
-    <div class="modal-container"></div>
 
 <script type="text/javascript">
     document.getElementById("navbartext").innerHTML = "Session Select";
     document.getElementById("titlemessage").textContent = "Session Selection";
-    document.getElementById("navback").style.visibility ="visible";
+    document.getElementById("navback").style.display ="block";
     document.getElementById("navback").href = "index.php";
 
     $(document).ready(function() {
