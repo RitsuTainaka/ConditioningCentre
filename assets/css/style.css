@@ -244,8 +244,8 @@ body {
     padding: 45px;
     grid-template-columns: 1fr;
     grid-template-rows:
+            100px
             50px
-            30px
             50px;
 }
 
@@ -262,8 +262,8 @@ body {
     grid-template-columns: 1fr;
     grid-template-rows:
             50px
+            100px
             50px
-            30px
             50px;
 }
 .newcustomer-textboxes{
@@ -286,7 +286,7 @@ body {
     grid-template-rows:
             150px
             30px
-            30px
+            50px
             50px;
 }
 
